@@ -15,6 +15,8 @@ jobs:
           python-version: '3.11'
       - name: Kütüphaneleri kur
         run: pip install yfinance pandas requests
+      - name: Dosyaları listele
+        run: ls -la
       - name: Taramayı çalıştır
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
