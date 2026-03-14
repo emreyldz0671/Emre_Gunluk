@@ -5,20 +5,14 @@ WaveTrend DİP AL Sinyal Tarayıcı — BIST 600
 Kurulum: pip install yfinance pandas requests
 Çalıştırma: python wavetrend_bist_scanner.py
 """
-
+import os
+TELEGRAM_TOKEN   = os.environ.get("TELEGRAM_TOKEN", "")
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
 import yfinance as yf
 import pandas as pd
 import requests
 import time
 from datetime import datetime
-
-# ============================================================
-#  ✏️  BURAYA KENDİ BİLGİLERİNİ GİR
-# ============================================================
-import os
-TELEGRAM_TOKEN   = os.environ.get("TELEGRAM_TOKEN", "")
-TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
-
 # ============================================================
 #  ⚙️  İNDİKATÖR AYARLARI (Pine Script ile aynı)
 # ============================================================
