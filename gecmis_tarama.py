@@ -146,7 +146,7 @@ def gecmis_tara():
 
     for i, sembol in enumerate(BIST_SEMBOLLER):
         try:
-            df = yf.download(sembol, period="120d", interval="1d",
+            df = yf.download(sembol, period="2y", interval="1d",
                              progress=False, auto_adjust=True)
             if df is None or len(df) < 50:
                 continue
