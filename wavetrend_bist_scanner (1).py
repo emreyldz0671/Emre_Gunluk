@@ -15,8 +15,9 @@ from datetime import datetime
 # ============================================================
 #  ✏️  BURAYA KENDİ BİLGİLERİNİ GİR
 # ============================================================
-TELEGRAM_TOKEN  = "BURAYA_BOT_TOKEN_YAZ"      # @BotFather'dan aldığın token
-TELEGRAM_CHAT_ID = "BURAYA_CHAT_ID_YAZ"       # @userinfobot'tan aldığın ID
+import os
+TELEGRAM_TOKEN   = os.environ.get("TELEGRAM_TOKEN", "")
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
 
 # ============================================================
 #  ⚙️  İNDİKATÖR AYARLARI (Pine Script ile aynı)
