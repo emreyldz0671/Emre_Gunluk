@@ -108,20 +108,23 @@ def hesapla_wavetrend(df, n1=N1, n2=N2):
     wt2 = wt1.rolling(4).mean()
     return wt1, wt2
 
-def sinyal_var_mi_gun(wt1, wt2, hedef_idx, trigger=TRIGGER_LEVEL, target=TARGET_CROSS):
-    """Belirli bir index'te sinyal var mı kontrol et"""
+def sinyal_var_mi(wt1, wt2, trigger=TRIGGER_LEVEL, target=TARGET_CROSS):
     cross_count = 0
-    for i in range(1, hedef_idx + 1):
+    n = len(wt1)
+    for i in range(1, n):
+        # Pine gibi ÖNCE sıfırla
         if wt1.iloc[i] > trigger:
             cross_count = 0
         bull_cross = (wt1.iloc[i-1] < wt2.iloc[i-1]) and (wt1.iloc[i] > wt2.iloc[i])
+        # SONRA say
         if bull_cross and wt1.iloc[i] < trigger:
             cross_count += 1
-        if bull_cross and (wt1.iloc[i] < trigger) and (cross_count == target):
-            if i == hedef_idx:
-                return True
+        # Sinyal kontrolü
+        if bull_cross and wt1.iloc[i] < trigger and cross_count == target:
+            if i == n - 1:
+                return True, wt1.iloc[-1], wt2.iloc[-1]
             cross_count = 0
-    return False
+    return False, wt1.iloc[-1], wt2.iloc[-1]
 
 def telegram_gonder(mesaj):
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
