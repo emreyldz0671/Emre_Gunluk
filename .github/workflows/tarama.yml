@@ -16,8 +16,6 @@ jobs:
           pip install requests pandas websocket-client
           git clone https://github.com/rongardF/tvdatafeed.git tvdatafeed_repo
           cp -r tvdatafeed_repo/tvdatafeed ./tvdatafeed
-      - name: Dosyaları listele
-        run: ls -la
       - name: Taramayı çalıştır
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
