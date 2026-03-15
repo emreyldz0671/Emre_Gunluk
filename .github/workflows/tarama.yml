@@ -13,8 +13,8 @@ jobs:
           python-version: '3.11'
       - name: Kütüphaneleri kur
         run: |
-          pip install requests pandas
-          pip install git+https://github.com/rongardF/tvdatafeed.git
+          pip install requests pandas websocket-client
+          pip install --no-build-isolation git+https://github.com/rongardF/tvdatafeed.git
       - name: Dosyaları listele
         run: ls -la
       - name: Taramayı çalıştır
