@@ -1,10 +1,8 @@
 name: BIST WaveTrend Tarama
-
 on:
   schedule:
     - cron: '15 15 * * 1-5'
   workflow_dispatch:
-
 jobs:
   tara:
     runs-on: ubuntu-latest
@@ -14,11 +12,15 @@ jobs:
         with:
           python-version: '3.11'
       - name: Kütüphaneleri kur
-        run: pip install requests pandas git+https://github.com/rongardF/tvdatafeed.git
+        run: |
+          pip install requests pandas
+          pip install git+https://github.com/rongardF/tvdatafeed.git
       - name: Dosyaları listele
         run: ls -la
       - name: Taramayı çalıştır
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TV_USERNAME: ${{ secrets.TV_USERNAME }}
+          TV_PASSWORD: ${{ secrets.TV_PASSWORD }}
         run: python scanner.py
