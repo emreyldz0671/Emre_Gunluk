@@ -12,10 +12,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Kütüphaneleri kur
-        run: |
-          pip install requests pandas websocket-client
-          git clone https://github.com/rongardF/tvdatafeed.git tvdatafeed_repo
-          cd tvdatafeed_repo && pip install . && cd ..
+        run: pip install requests pandas websocket-client
       - name: Taramayı çalıştır
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
