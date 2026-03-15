@@ -14,7 +14,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Kütüphaneleri kur
-        run: pip install yfinance pandas requests
+        run: run: pip install requests pandas git+https://github.com/rongardF/tvdatafeed.git
       - name: Dosyaları listele
         run: ls -la
       - name: Taramayı çalıştır
