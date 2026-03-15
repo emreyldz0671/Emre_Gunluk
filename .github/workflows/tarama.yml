@@ -14,11 +14,11 @@ jobs:
         with:
           python-version: '3.11'
       - name: Kütüphaneleri kur
-        run: run: pip install requests pandas git+https://github.com/rongardF/tvdatafeed.git
+        run: pip install requests pandas git+https://github.com/rongardF/tvdatafeed.git
       - name: Dosyaları listele
         run: ls -la
       - name: Taramayı çalıştır
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: scanner.py
+        run: python scanner.py
